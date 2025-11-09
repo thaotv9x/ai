@@ -1,0 +1,30 @@
+<div class="w-14rem fixed overflow-y-auto bg-white border-r cust">
+  <ul class="list-none m-0 p-0">
+
+    <li *ngFor="let item of menuItems" class="p-2">
+      <!-- Mục không có submenu -->
+      <a *ngIf="!item.items" [routerLink]=" '/pos' + item.routerLink" routerLinkActive="text-primary font-semibold"
+        class="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-gray-100 transition no-underline">
+        <i [class]="item.icon + ' text-base text-gray-600'"></i>
+        <span class="text-gray-800 text-sm">{{ item.label }}</span>
+      </a>
+
+      <!-- Mục có submenu -->
+      <div *ngIf="item.items">
+        <div class="text-gray-500 text-xs font-bold px-2 mb-1 uppercase tracking-wide">
+          {{ item.label }}
+        </div>
+        <ul>
+          <li *ngFor="let sub of item.items">
+            <a [routerLink]="'/pos' + sub.routerLink" routerLinkActive="text-blue-600 font-medium bg-blue-50"
+              class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition text-sm text-gray-700 no-underline">
+              <i [class]="sub.icon + ' text-sm'"></i>
+              <span>{{ sub.label }}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+
+  </ul>
+</div>

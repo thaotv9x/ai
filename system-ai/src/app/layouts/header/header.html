@@ -1,0 +1,15 @@
+<header
+    class="flex align-items-center justify-between bg-white shadow-1 px-5 py-3 w-full justify-content-between fixed z-1">
+    <div class="flex align-items-center gap-3">
+        <app-at-button-component (handleClick)="onToggleSidebar()" icon="pi pi-bars"></app-at-button-component>
+        <div class="flex align-items-center gap-2">
+            <i class="pi pi-shop text-4xl" style="color: #10b981;"></i>
+            <span class="text-center text-xl m-0" style="color: #334155;">POS</span>
+        </div>
+    </div>
+    <div class="flex items-center gap-4">
+        <div class="flex items-center gap-2">
+            <span class="text-sm text-gray-700">{{ userName }}</span>
+        </div>
+    </div>
+</header>

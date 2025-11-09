@@ -1,0 +1,9 @@
+<div class="flex flex-column h-screen bg-slate-50">
+    <app-header class="w-full" (toggleSidebar)="isSidebarVisible = !isSidebarVisible"></app-header>
+    <div class="flex py-3 h-full">
+        <app-sidebar *ngIf="isSidebarVisible"></app-sidebar>
+        <div class="w-full mt-7 overflow-auto" style="margin-left: 14rem;" [ngClass]="{'ml-0': !isSidebarVisible}">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
