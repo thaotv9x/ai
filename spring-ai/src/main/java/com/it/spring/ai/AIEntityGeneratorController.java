@@ -1,7 +1,5 @@
 package com.it.spring.ai;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -63,8 +61,7 @@ public class AIEntityGeneratorController {
             // Bước 4: Trả về response
             log.info("📤 STEP 4: Preparing response...");
             Map<String, Object> response = Map.of("status", "success", "fileName", file.getOriginalFilename(),
-                    "fileSize", file.getSize(), "tableInfo", tableInfo, "entityCode", entityCode, "debugInfo",
-                    debugInfo, "generatedAt", LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
+                    "fileSize", file.getSize(), "tableInfo", tableInfo, "entityCode", entityCode);
 
             log.info("🎉 COMPLETED: Entity generation successful for file: {}", file.getOriginalFilename());
             return ResponseEntity.ok(response);

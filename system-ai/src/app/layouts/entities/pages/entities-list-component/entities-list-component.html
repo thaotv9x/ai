@@ -2,60 +2,51 @@
   <!-- Khung chat messages -->
   <div class="flex-auto overflow-auto p-2 surface-0 shadow-2 border-round-xl">
     <div class="flex flex-column gap-2">
-      <!-- Tin nhắn bot -->
+      <!-- Ví dụ tin nhắn bot -->
       <div class="flex flex-row gap-2 align-items-start">
         <span class="text-3xl">🤖</span>
-        <div class="surface-100 border-round-lg p-2"></div>
+        <div class="surface-100 border-round-lg p-2">Chào bạn 👋</div>
       </div>
 
-      <!-- Tin nhắn user -->
+      <!-- Ví dụ tin nhắn user -->
       <div class="flex flex-row-reverse gap-2 align-items-start">
         <span class="text-3xl">🧑‍💻</span>
-        <div class="surface-100 border-round-lg p-2"></div>
+        <div class="surface-100 border-round-lg p-2">Xin chào</div>
       </div>
-
+       <div class="flex align-items-center gap-2 p-2 border-1 surface-200 border-round cursor-pointer"
+             (click)="downloadEntityFile()">
+          <i class="pi pi-file text-primary"></i>
+          <div class="flex flex-column">
+            <span class="font-semibold">{{ result?.fileName }}</span>
+            <small class="text-gray-500">Click to download Java entity class</small>
+          </div>
+          <i class="pi pi-download ml-auto text-primary"></i>
+        </div>
     </div>
   </div>
 
+  <!-- Khung input + file upload -->
   <div class="flex flex-column gap-2 pt-2">
     <div class="surface-0 shadow-2 border-round-xl p-2">
-      <!-- File list chỉ hiển thị trong khung input -->
-      <div class="flex gap-2 p-2 flex-wrap" *ngIf="selectedFiles.length > 0">
-        <div
-          class="surface-100 border-round-lg p-1 flex align-items-center gap-1"
-          *ngFor="let file of selectedFiles"
-        >
-          📎 {{ file.name }}
-          <button
-            class="cursor-pointer text-red-600 btn"
-            (click)="removeFile(selectedFiles.indexOf(file))"
-          >
-            ❌
-          </button>
-        </div>
-      </div>
-      <div
-        class="flex flex-row gap-2 align-items-center"
-      >
-        <!-- Nút upload file -->
-        <label
-          class="surface-200 border-circle flex justify-content-center align-items-center cursor-pointer w-1rem h-1rem"
-        >
-          <input type="file" hidden (change)="onFileSelected($event)" />
-          <span class="text-xl">+</span>
-        </label>
+      <div class="flex flex-row gap-2 align-items-center justify-content-between">
+        <div class="flex align-items-center w-full gap-2">
+          <!-- Nút upload 1 file -->
+          <label
+            class="surface-200 border-circle flex justify-content-center align-items-center cursor-pointer w-1rem h-1rem">
+            <input type="file" hidden (change)="onFileSelected($event)" #fileInput/>
+            <span class="text-xl">+</span>
+          </label>
 
-        <textarea
-          pTextarea
-          id="textarea-1"
-          [autoResize]="true"
-          [(ngModel)]="message"
-          pSize="small"
-          placeholder="Nội dung....."
-          rows="1"
-          class="flex-auto"
-          (keydown.enter)="sendMessage(); $event.preventDefault()"
-        ></textarea>
+          <!-- File đã chọn -->
+          <div class="surface-100 border-round-lg p-1 flex align-items-center gap-1" *ngIf="selectedFile">
+            📎 {{ selectedFile.name }}
+            <button class="cursor-pointer text-red-600 btn" (click)="removeFile()">❌</button>
+          </div>
+        </div>
+
+        <!-- Nút gửi -->
+        <app-at-button-icon-component pButton icon="pi pi-send"
+          (handleClick)="sendFile()"></app-at-button-icon-component>
       </div>
     </div>
   </div>
