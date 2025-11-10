@@ -21,10 +21,10 @@ export abstract class BaseTableInOut {
   @Input() placeholder: string = '';
   @Input() classSpan: string = '';
 
-  @Output() handleClick = new EventEmitter<any>();
-  @Output() handleDetail = new EventEmitter<any>();
-  @Output() handleSearch = new EventEmitter<any>();
-  @Output() handleCreate = new EventEmitter<any>();
+  // @Output() handleClick = new EventEmitter<any>();
+  // @Output() handleDetail = new EventEmitter<any>();
+  // @Output() handleSearch = new EventEmitter<any>();
+  // @Output() handleCreate = new EventEmitter<any>();
 
   constructor(public submitService?: FormSubmitService) {
   }
@@ -33,48 +33,48 @@ export abstract class BaseTableInOut {
     return this.formGroup.get(this.controlName);
   }
 
-  getStatus(): boolean {
-    if (!this.control) return false;
-    const submitted = this.submitService?.getSubmitted();
-    if (this.control.invalid && submitted) {
-      return true;
-    }
-    return false;
-  }
+  // getStatus(): boolean {
+  //   if (!this.control) return false;
+  //   const submitted = this.submitService?.getSubmitted();
+  //   if (this.control.invalid && submitted) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
 
-  getErrorMessage(): string {
-    const errors = this.control?.errors;
-    if (!errors) return '';
-    if (errors['required']) {
-      return 'Trường này bắt buộc';
-    }
-    if (errors['maxlength']) {
-      return `Không được vượt quá ${errors['maxlength'].requiredLength} ký tự`;
-    }
-    console.log('errors', errors);
+  // getErrorMessage(): string {
+  //   const errors = this.control?.errors;
+  //   if (!errors) return '';
+  //   if (errors['required']) {
+  //     return 'Trường này bắt buộc';
+  //   }
+  //   if (errors['maxlength']) {
+  //     return `Không được vượt quá ${errors['maxlength'].requiredLength} ký tự`;
+  //   }
+  //   console.log('errors', errors);
 
-    return 'Dữ liệu không hợp lệ';
-  }
+  //   return 'Dữ liệu không hợp lệ';
+  // }
 
-  eventClick() {
-    this.handleClick.emit();
-  }
+  // eventClick() {
+  //   this.handleClick.emit();
+  // }
 
-  detail(data: any) {
-    this.handleDetail.emit(data);
-  }
+  // detail(data: any) {
+  //   this.handleDetail.emit(data);
+  // }
 
-  search(data: any) {
-    this.handleSearch.emit(data);
-  }
+  // search(data: any) {
+  //   this.handleSearch.emit(data);
+  // }
 
-  create() {
-    this.handleCreate.emit();
-  }
+  // create() {
+  //   this.handleCreate.emit();
+  // }
 
-  createByData(data: any) {
-    console.log(data);
+  // createByData(data: any) {
+  //   console.log(data);
     
-    this.handleCreate.emit(data);
-  }
+  //   this.handleCreate.emit(data);
+  // }
 }

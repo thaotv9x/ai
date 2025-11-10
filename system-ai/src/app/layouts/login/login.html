@@ -1,0 +1,74 @@
+<div
+  class="flex align-items-center justify-content-center min-h-screen bg-primary-50"
+>
+  <div
+    class="bg-white p-10 rounded-2xl shadow-xl w-23rem border border-gray-200 p-3"
+  >
+    <!-- Logo -->
+    <div class="flex justify-content-center mb-4">
+      <i class="pi pi-th-large text-5xl text-primary-500"></i>
+    </div>
+
+    <!-- Title -->
+    <h2 class="text-center text-2xl font-bold text-900 mb-5">
+      Đăng nhập hệ thống
+    </h2>
+
+    <form [formGroup]="formGroup">
+      <!-- Username -->
+      <div class="relative">
+        <app-mo-input-component
+          class="pl-10"
+          [fieldConfig]="fieldConfigs['username']"
+        >
+        </app-mo-input-component>
+      </div>
+
+      <!-- Password -->
+      <div class="relative">
+        <app-mo-input-password-component
+          class="pl-10"
+          [fieldConfig]="fieldConfigs['password']"
+        >
+        </app-mo-input-password-component>
+      </div>
+
+      <!-- Forgot password -->
+      <div class="flex justify-content-end">
+        <a class="text-sm text-primary cursor-pointer hover:underline"
+          >Quên mật khẩu?</a
+        >
+      </div>
+    </form>
+
+    <!-- Button -->
+    <div class="grid m-0">
+        <app-at-button-component label="Đăng nhập" (handleClick)="onSubmit()" class="w-full">
+        </app-at-button-component>
+    </div>
+
+    <!-- Divider -->
+    <div class="flex align-items-center my-4">
+      <div class="flex-1 border-top-1 surface-border"></div>
+      <span class="mx-2 text-sm text-600">Hoặc</span>
+      <div class="flex-1 border-top-1 surface-border"></div>
+    </div>
+
+    <!-- Social login -->
+    <div class="flex justify-content-center gap-3">
+      <app-at-button-icon-component
+        label="Google"
+        icon="google"
+        customClass="btn-gg"
+      >
+      </app-at-button-icon-component>
+
+      <app-at-button-icon-component
+        label="Facebook"
+        icon="facebook"
+        customClass="btn-fb"
+      >
+      </app-at-button-icon-component>
+    </div>
+  </div>
+</div>

@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AtButtonComponent } from '../../components/at-button-component/at-button-component';
+import { AtButtonIconComponent } from "../../components/at/at-button-icon-component/at-button-icon-component";
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule, ReactiveFormsModule, AtButtonComponent],
+  imports: [CommonModule, ReactiveFormsModule, AtButtonIconComponent],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
